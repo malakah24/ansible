@@ -1,0 +1,24 @@
+- name: "manage worker1 and 2"
+  hosts: worker1
+  become: true
+  tasks:
+  - name: "Clone a github repositor"
+    git:
+       repo: https://github.com/upshiftnow/addressbook
+       clone: yes
+       update: yes
+  - name: "Install Maven"
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+           - maven
+  - name: "Run mvn package"
+      become: yes
+      shell: mvn package -f ~/addressbook/
+ - name: "copying file with playbook"
+      copy:
+        src: ~/addressbook/target/addressbook-2.0.war 
+        dest: webapps/addressbook.war
