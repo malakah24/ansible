@@ -1,4 +1,4 @@
- name: "generate war file"
+- name: "generate war file"
   hosts: local
   become: true
   vars:
