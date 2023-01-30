@@ -2,7 +2,7 @@
   hosts: local
   become: true
   vars:
-          gitdir: "/tmp/addressbook-project-1"
+          gitdir: "/tmp/addressbook-project-2"
   tasks:
           - name: "install maven"
             apt:
@@ -20,7 +20,7 @@
   hosts: worker1 
   become: true
   vars:
-          gitdir: "/tmp/addressbook-project-1"
+          gitdir: "/tmp/addressbook-project-2"
   tasks:
           - name: "install tomcat9"
             apt:
